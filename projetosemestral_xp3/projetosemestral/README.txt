@@ -1,5 +1,5 @@
 Integrantes do grupo:
-- Lucca Lucchin de Campos Costa
+- Lucas Fritsche
 - Kauan Cornelsen Pereira
 
 A página inicial é /pages/login.html
