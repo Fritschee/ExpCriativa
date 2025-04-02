@@ -6,6 +6,16 @@ function gravar() {
     var password = document.getElementById("password").value;
     var passwordConfirm = document.getElementById("passwordconfirm").value;
 
+    // Função para validar senha forte
+    function isStrongPassword(password) {
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+        return regex.test(password);
+    }
+
+    if (!isStrongPassword(password)) {
+        alert("A senha deve ter no mínimo 12 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
+        return;
+    }
 
     var hashedPassword = CryptoJS.SHA256(password).toString();
     var hashedPasswordconfirm = CryptoJS.SHA256(passwordConfirm).toString();
