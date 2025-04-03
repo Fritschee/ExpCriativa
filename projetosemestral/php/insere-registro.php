@@ -34,10 +34,10 @@ if (isset($_POST['nome'], $_POST['cpf'], $_POST['email'], $_POST['password'])) {
             $mail->Host = "smtp.gmail.com";
             $mail->Port = 587;
 
-            $mail->Username = 'kauancornelsen2@gmail.com';
-            $mail->Password = 'qkxyiucozppopmox';
+            $mail->Username = 'fritschetools@gmail.com';
+            $mail->Password = 'zrnflnldbjbwailv';
 
-            $mail->setFrom('kauancornelsen2@gmail.com', 'Suporte do Sistema');
+            $mail->setFrom('fritschetools@gmail.com', 'Suporte do Sistema');
             $mail->addAddress($email, $nome);
 
             $mail->isHTML(true);
@@ -45,7 +45,7 @@ if (isset($_POST['nome'], $_POST['cpf'], $_POST['email'], $_POST['password'])) {
             $mail->Body = '
                 <h3>Olá, ' . htmlspecialchars($nome) . '!</h3>
                 <p>Para concluir seu cadastro, clique no link abaixo:</p>
-                <a href="http://localhost/ExpCriativa/projetosemestral/php/confirma-cadastro.php?token=' . $token . '">
+                <a href="http://localhost/projetosemestral/php/confirma-cadastro.php?token=' . $token . '">
                 Confirmar Cadastro</a>
                 <br><br>
                 <small>Se você não solicitou este cadastro, ignore esta mensagem.</small>';

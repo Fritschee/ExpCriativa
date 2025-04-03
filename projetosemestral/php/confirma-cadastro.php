@@ -4,7 +4,7 @@ include "conexao.php";
 
 if (!isset($_GET['token'])) {
     echo "<h3>Token inválido ou não fornecido.</h3>";
-    header("Refresh: 3; url=http://localhost/ExpCriativa/projetosemestral/pages/register.html");
+    header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
     exit;
 }
 
@@ -22,7 +22,7 @@ if (mysqli_stmt_num_rows($stmt) === 1) {
 
     if ($confirmado) {
         echo "<h3>Seu cadastro já foi confirmado anteriormente!</h3>";
-        header("Refresh: 3; url=http://localhost/ExpCriativa/projetosemestral/pages/login.html");
+        header("Refresh: 3; url=http://localhost/projetosemestral/pages/login.html");
     } else {
         $sqlUpdate = "UPDATE usuario SET confirmado = true, token = NULL WHERE token = ?";
         $stmtUpdate = mysqli_prepare($con, $sqlUpdate);
@@ -31,17 +31,17 @@ if (mysqli_stmt_num_rows($stmt) === 1) {
 
         if (mysqli_stmt_affected_rows($stmtUpdate) > 0) {
             echo "<h3>Cadastro confirmado com sucesso!</h3>";
-            header("Refresh: 3; url=http://localhost/ExpCriativa/projetosemestral/pages/login.html");
+            header("Refresh: 3; url=http://localhost/projetosemestral/pages/login.html");
         } else {
             echo "<h3>Erro ao confirmar cadastro. Tente novamente.</h3>";
-            header("Refresh: 3; url=http://localhost/ExpCriativa/projetosemestral/pages/register.html");
+            header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
         }
 
         mysqli_stmt_close($stmtUpdate);
     }
 } else {
     echo "<h3>Token inválido ou já utilizado.</h3>";
-    header("Refresh: 3; url=http://localhost/ExpCriativa/projetosemestral/pages/register.html");
+    header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
 }
 
 mysqli_stmt_close($stmt);

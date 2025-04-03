@@ -5,9 +5,15 @@ document.getElementById("formAlterarSenha").addEventListener("submit", function 
     var novaSenha = document.getElementById("novaSenha").value;
     var confirmarNovaSenha = document.getElementById("confirmarNovaSenha").value;
 
-    // Função para validar senha forte
+    // Verifica se as senhas novas são iguais
+    if (novaSenha !== confirmarNovaSenha) {
+        alert("As novas senhas não coincidem.");
+        return;
+    }
+
+    // Verifica se a senha atende aos requisitos de segurança
     function isStrongPassword(password) {
-        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{12,}$/;
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{12,}$/;
         return regex.test(password);
     }
 
@@ -16,29 +22,32 @@ document.getElementById("formAlterarSenha").addEventListener("submit", function 
         return;
     }
 
-    if (novaSenha !== confirmarNovaSenha) {
-        alert("As senhas não coincidem.");
-        return;
-    }
+    // Gera os hashes das senhas
+    var senhaAtualHash = CryptoJS.SHA256(senhaAtual).toString();
+    var novaSenhaHash = CryptoJS.SHA256(novaSenha).toString();
 
-    var hashedSenhaAtual = CryptoJS.SHA256(senhaAtual).toString();
-    var hashedNovaSenha = CryptoJS.SHA256(novaSenha).toString();
-
-    fetch("../php/alterar-senha.php", {
+    // Envia os dados para o servidor via fetch API
+    fetch("alterar-senha.php", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ senhaAtual: hashedSenhaAtual, novaSenha: hashedNovaSenha })
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            senhaAtual: senhaAtualHash,
+            novaSenha: novaSenhaHash
+        })
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            alert("Senha alterada com sucesso!");
+            alert("Senha alterada com sucesso! Faça login novamente.");
             window.location.href = "login.html";
         } else {
             alert("Erro ao alterar senha: " + data.message);
         }
     })
     .catch(error => {
-        alert("Erro ao processar a solicitação: " + error);
+        alert("Erro ao processar a solicitação.");
+        console.error("Erro:", error);
     });
 });

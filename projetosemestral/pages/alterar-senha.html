@@ -6,20 +6,17 @@
     <title>Alterar Senha</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
     <script defer src="alterar-senha.js"></script>
+    <link rel="stylesheet" href="alterar-senha.css">
 </head>
 <body>
-    <h2>Alterar Senha</h2>
-    <form id="formAlterarSenha">
-        <label for="senhaAtual">Senha Atual:</label>
-        <input type="password" id="senhaAtual" required>
-
-        <label for="novaSenha">Nova Senha:</label>
-        <input type="password" id="novaSenha" required>
-
-        <label for="confirmarNovaSenha">Confirmar Nova Senha:</label>
-        <input type="password" id="confirmarNovaSenha" required>
-
-        <button type="submit">Alterar Senha</button>
-    </form>
+    <div class="form">
+        <h2 class="header">Alterar Senha</h2>
+        <form id="formAlterarSenha">
+            <input type="password" id="senhaAtual" class="input" placeholder="Senha Atual" required>
+            <input type="password" id="novaSenha" class="input" placeholder="Nova Senha" required>
+            <input type="password" id="confirmarNovaSenha" class="input" placeholder="Confirmar Nova Senha" required>
+            <button type="submit" class="submit">Alterar Senha</button>
+        </form>
+    </div>
 </body>
 </html>
