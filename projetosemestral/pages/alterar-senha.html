@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alterar Senha</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script defer src="alterar-senha.js"></script>
+</head>
+<body>
+    <h2>Alterar Senha</h2>
+    <form id="formAlterarSenha">
+        <label for="senhaAtual">Senha Atual:</label>
+        <input type="password" id="senhaAtual" required>
+
+        <label for="novaSenha">Nova Senha:</label>
+        <input type="password" id="novaSenha" required>
+
+        <label for="confirmarNovaSenha">Confirmar Nova Senha:</label>
+        <input type="password" id="confirmarNovaSenha" required>
+
+        <button type="submit">Alterar Senha</button>
+    </form>
+</body>
+</html>

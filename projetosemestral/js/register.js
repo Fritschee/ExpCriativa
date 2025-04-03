@@ -8,7 +8,7 @@ function gravar() {
 
     // Função para validar senha forte
     function isStrongPassword(password) {
-        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{12,}$/;
+        var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{12,}$/;
         return regex.test(password);
     }
 
