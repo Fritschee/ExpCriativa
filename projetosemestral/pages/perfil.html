@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js" defer></script>
+    <style>
+        .perfil-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 50px;
+        }
+
+        .perfil-card {
+            background-color: #2c2c2c;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border: solid 1px #fff;
+        }
+
+        .perfil-card p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .perfil-botao {
+            margin-top: 20px;
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="areaTotal">
+
+        <div class="header">Meu Perfil</div>
+
+        <div class="menu">
+            <div class="btnLateral">
+                <img onclick="gotoIndex()" class="logo" src="../assets/logo.png" height="150px" />
+            </div>
+
+            <div class="btnLateral">
+                <button onclick="gotoProducts()" class="btn">Produtos</button>
+            </div>
+
+            <div class="btnLateral">
+                <button onclick="gotoCart()" class="btn">Carrinho</button>
+            </div>
+        </div>
+
+        <div class="perfil-container">
+            <div class="clientesTitulo">Dados da Conta</div>
+
+            <div class="perfil-card">
+                <p><strong>Nome:</strong> João Silva</p>
+                <p><strong>Email:</strong> joao.silva@email.com</p>
+                <p><strong>Telefone:</strong> (41) 99999-9999</p>
+            </div>
+
+            <button onclick="gotoAlterarSenha()" class="btn perfil-botao">Alterar Senha</button>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
