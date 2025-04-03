@@ -6,7 +6,6 @@ function gravar() {
     var password = document.getElementById("password").value;
     var passwordConfirm = document.getElementById("passwordconfirm").value;
 
-    // Função para validar senha forte
     function isStrongPassword(password) {
         var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{12,}$/;
         return regex.test(password);
@@ -65,6 +64,11 @@ function gravar() {
     dados.set('password', hashedPassword);
     dados.delete('passwordconfirm');
 
+    // Mostra uma mensagem ao usuário enquanto espera
+    const botaoRegistrar = document.querySelector('.submit');
+    botaoRegistrar.disabled = true;
+    botaoRegistrar.textContent = 'Registrando, aguarde...';
+
     fetch("../php/insere-registro.php", {
         method: "POST",
         body: dados
@@ -77,5 +81,8 @@ function gravar() {
         }
     }).catch(error => {
         alert("Erro ao processar o registro: " + error);
+    }).finally(() => {
+        botaoRegistrar.disabled = false;
+        botaoRegistrar.textContent = 'Registrar';
     });
 }
