@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Configurar 2FA</title>
+    <link rel="stylesheet" href="../css/login.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+    <script src="../js/configurar-2fa.js" defer></script>
+</head>
+<body>
+    <div class="form">
+        <img src="../assets/logo.png" width="100%">
+        <h1 class="header">Autenticação 2FA</h1>
+
+        <div style="text-align: center;">
+            <p>Escaneie o QR Code abaixo com o Google Authenticator:</p>
+            <canvas id="qrcode"></canvas>
+            <p id="secretText"></p>
+        </div>
+
+        <form>
+            <input class="input" type="text" id="code" placeholder="Código do Google Authenticator" required>
+            <button type="button" class="submit" onclick="validar2FA()">Validar</button>
+        </form>
+
+        <a href="login.html" class="link">Voltar ao Login</a>
+    </div>
+</body>
+</html>

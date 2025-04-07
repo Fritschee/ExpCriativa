@@ -44,7 +44,7 @@ if (isset($_POST['email'])) {
                 $mail->Body = '
                     <h3>Olá!</h3>
                     <p>Para redefinir sua senha, clique no link abaixo:</p>
-                    <a href="http://localhost/ExpCriativa/projetosemestral/pages/change-password.html?token=' . $token . '">Redefinir Senha</a>
+                    <a href="http://localhost/projetosemestral/pages/change-password.html?token=' . $token . '">Redefinir Senha</a>
                     <p>Se você não solicitou isso, ignore este e-mail.</p>';
 
                 $mail->send();

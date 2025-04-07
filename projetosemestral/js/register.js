@@ -75,7 +75,7 @@ function gravar() {
     }).then(response => response.json())
     .then(data => {
         if (data.success) {
-            window.location.href = "../pages/login.html";
+            window.location.href = "../pages/configurar-2fa.html?email=" + encodeURIComponent(email);
         } else {
             alert("Erro ao registrar: " + data.message);
         }

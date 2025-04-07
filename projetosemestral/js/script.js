@@ -15,5 +15,20 @@ function gotoProfile() {
 }
 
 function gotoAlterarSenha() {
-    window.location.href = "../pages/alterar-senha.html";
+    window.location.href = "../pages/forgot-password.html";
 }
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const nome = sessionStorage.getItem("nome");
+    const email = sessionStorage.getItem("email");
+
+    if (!nome || !email) {
+        alert("Sessão expirada. Faça login novamente.");
+        window.location.href = "../pages/login.html";
+        return;
+    }
+
+    document.getElementById("perfil-nome").textContent = nome;
+    document.getElementById("perfil-email").textContent = email;
+});
