@@ -46,7 +46,8 @@ body {
     padding: 1rem;
 }
 
-.btnLateral, .btnProdutos {
+.btnLateral,
+.btnProdutos {
     margin: 0.5rem;
     flex: 1 1 150px;
     text-align: center;
@@ -57,6 +58,7 @@ body {
     max-width: 100px;
 }
 
+/* Botões */
 .btn {
     background-color: #858585;
     border-radius: 12px;
@@ -73,7 +75,7 @@ body {
 .btn:hover {
     background-color: white;
     color: #2c2c2c;
-    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Carrinho */
@@ -105,7 +107,8 @@ body {
     font-weight: bold;
 }
 
-.carrinhoNome, .carrinhoVal {
+.carrinhoNome,
+.carrinhoVal {
     flex: 1;
     text-align: center;
 }
@@ -148,7 +151,7 @@ body {
 .checkoutBtn:hover {
     background-color: white;
     color: #2c2c2c;
-    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+    box-shadow: 0 12px 16px rgba(0, 0, 0, 0.2);
 }
 
 /* Contato */
@@ -213,31 +216,131 @@ body {
     font-size: 1rem;
 }
 
-/* Responsividade */
-@media screen and (max-width: 768px) {
+/*-------------------------------------------------------------
+  Media Queries para Diferentes Resoluções
+-------------------------------------------------------------*/
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    /* Menu em coluna e botões com largura total */
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+    .btnLateral,
+    .btnProdutos {
+        flex: 1 1 100%;
+    }
+    .btn,
+    .checkoutBtn {
+        font-size: 0.9rem;
+    }
+    
+    /* Ajuste de layout no carrinho: empilhando os elementos */
     .carrinho {
         flex-direction: column;
     }
-
-    .listaCarrinho, .checkout {
-        flex: 1 1 100%;
+    
+    /* Contato em coluna para melhor visualização */
+    .contato {
+        flex-direction: column;
+        align-items: center;
     }
+    .contatoCard {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contatoCardImg {
+        margin-bottom: 0.5rem;
+    }
+}
 
-    .btn, .checkoutBtn {
+/* Tablets e telas pequenas (de 481px até 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .btn,
+    .checkoutBtn {
         font-size: 0.95rem;
     }
-
+    /* Carrinho segue em layout empilhado */
+    .carrinho {
+        flex-direction: column;
+    }
+    .listaCarrinho,
+    .checkout {
+        flex: 1 1 100%;
+    }
+    /* Contato: ajuste para garantir boa legibilidade */
     .contatoCard {
         flex-direction: column;
         align-items: flex-start;
     }
-
     .contatoCardImg {
         margin-bottom: 0.5rem;
     }
-
     .contatoCardTexto {
         text-align: center;
         width: 100%;
+    }
+}
+
+/* Telas de tablets a laptops (de 769px até 992px) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    /* Exibir o carrinho em duas colunas */
+    .carrinho {
+        flex-direction: row;
+    }
+    .listaCarrinho {
+        flex: 1 1 60%;
+        padding: 1rem;
+    }
+    .checkout {
+        flex: 1 1 35%;
+        padding: 1rem;
+    }
+    /* Contato: manter alinhamento horizontal quando possível */
+    .contatoCard {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* Laptops e desktops médios (de 993px até 1200px) */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    .areaTotal {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .menu {
+        justify-content: space-between;
+    }
+    .carrinho {
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+    .btn,
+    .checkoutBtn {
+        font-size: 1rem;
+    }
+}
+
+/* Telas grandes e desktops (a partir de 1201px) */
+@media screen and (min-width: 1201px) {
+    .areaTotal {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .menu {
+        padding: 2rem;
+        justify-content: space-between;
+    }
+    .carrinho {
+        gap: 2rem;
+        padding: 2rem;
+        justify-content: space-around;
+    }
+    .rodape {
+        padding: 2rem;
+        gap: 2rem;
     }
 }
