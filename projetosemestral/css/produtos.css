@@ -3,57 +3,47 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
-
-body {
+  }
+  
+  body {
     display: flex;
+    flex-direction: column;
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(rgba(44, 44, 44, 0.9), rgba(44, 44, 44, 0.9)),
                 url('../assets/fundo.jpeg') no-repeat center center fixed;
     background-size: cover;
     color: #fff;
-}
-
-/* Área principal */
-.areaTotal {
+  }
+  
+  /* Área principal */
+  .areaTotal {
     width: 100%;
     background-color: transparent;
-}
-
-/* Header */
-.header {
-    background-color: #2c2c2c;
-    color: #fff;
-    width: 100%;
-    text-align: center;
-    padding: 1rem;
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/* Menu */
-.menu {
+  }
+  
+  /* Menu */
+  .menu {
     background-color: #858585;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     padding: 1rem;
-}
-
-.btnLateral, .btnProdutos {
+  }
+  
+  .btnLateral, .btnProdutos {
     margin: 0.5rem;
     flex: 1 1 150px;
     text-align: center;
-}
-
-.logo {
+  }
+  
+  .logo {
     cursor: pointer;
     max-width: 100px;
-}
-
-/* Botões */
-.btn, .produtosBtn {
+  }
+  
+  /* Botões */
+  .btn, .produtosBtn {
     background-color: #858585;
     border-radius: 12px;
     transition: 0.4s;
@@ -64,25 +54,25 @@ body {
     height: 50px;
     cursor: pointer;
     border: none;
-}
-
-.btn:hover, .produtosBtn:hover {
+  }
+  
+  .btn:hover, .produtosBtn:hover {
     background-color: white;
     color: #2c2c2c;
     box-shadow: 0 12px 16px rgba(0,0,0,0.2);
-}
-
-/* Produtos */
-.produtos {
+  }
+  
+  /* Produtos */
+  .produtos {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 1rem;
     padding: 1rem;
-}
-
-.produtosCard {
+  }
+  
+  .produtosCard {
     width: 90%;
     max-width: 600px;
     background-color: #fff;
@@ -90,95 +80,167 @@ body {
     border: 2px solid #2c2c2c;
     border-radius: 12px;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     overflow: hidden;
     transition: 0.4s ease;
-}
-
-.produtosCard:hover {
+  }
+  
+  .produtosCard:hover {
     box-shadow: 0 12px 16px rgba(0,0,0,0.2);
-}
-
-.produtosImg {
+  }
+  
+  .produtosImg {
     flex: 1 1 50%;
     max-height: 300px;
     overflow: hidden;
-}
-
-.produtosImg img {
+  }
+  
+  .produtosImg img {
     width: 100%;
     height: auto;
-}
-
-.produtosInfo {
+  }
+  
+  .produtosInfo {
     flex: 1 1 50%;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
-
-.produtosNome {
-    font-size: 1.5rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-.produtosDesc {
-    font-size: 1.1rem;
-    text-align: center;
-    margin: 1rem 0;
-}
-
-.produtosVal {
-    font-size: 1.3rem;
-    font-weight: bold;
-    text-align: center;
-}
-
-/* Rodapé */
-.rodape {
+  }
+  
+  /* Rodapé */
+  .rodape {
     background-color: #2c2c2c;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 1rem;
     gap: 1rem;
-}
-
-.rodapeCard {
+  }
+  
+  .rodapeCard {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-}
-
-.rodapeImg {
+  }
+  
+  .rodapeImg {
     width: 32px;
     height: 32px;
-}
-
-.rodapeTexto {
+  }
+  
+  .rodapeTexto {
     color: #fff;
     font-weight: bold;
     font-size: 1rem;
-}
-
-/* Responsividade */
-@media screen and (max-width: 768px) {
-    .produtosCard {
-        flex-direction: column;
+  }
+  
+  /*-------------------------------------------------------------
+    Media Queries para Diferentes Resoluções
+  -------------------------------------------------------------*/
+  
+  /* Telas muito pequenas (até 480px) */
+  @media screen and (max-width: 480px) {
+    /* Menu em coluna e botões com largura total */
+    .menu {
+      flex-direction: column;
+      align-items: center;
     }
-
-    .produtosImg, .produtosInfo {
-        flex: 1 1 100%;
-        text-align: center;
+    .btnLateral, .btnProdutos {
+      flex: 1 1 100%;
     }
-
+    
+    /* Ajuste de fontes para melhor legibilidade */
     .btn, .produtosBtn {
-        font-size: 0.95rem;
+      font-size: 0.9rem;
     }
-
+    
+    /* Rodapé em coluna */
+    .rodape {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  /* Tablets e telas pequenas (a partir de 481px até 768px) */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Layout de produtos: manter os cards em coluna */
+    .produtosCard {
+      flex-direction: column;
+    }
+    .produtosImg, .produtosInfo {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+    
+    /* Ajustes nos botões */
+    .btn, .produtosBtn {
+      font-size: 0.95rem;
+    }
+    
     .produtosBtn {
-        margin-top: 1rem;
+      margin-top: 1rem;
     }
-}
+  }
+  
+  /* Telas de tablets a laptops (a partir de 769px até 992px) */
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    /* Exibir os cards de produtos em duas colunas */
+    .produtos {
+      justify-content: space-around;
+    }
+    .produtosCard {
+      flex-direction: row;
+      width: 45%;
+    }
+    /* No menu, forçando layout em linha */
+    .menu {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  /* Laptops e desktops médios (a partir de 993px até 1200px) */
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    /* Centralizando a área total e aumentando o espaçamento */
+    .areaTotal {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .menu {
+      justify-content: space-between;
+    }
+    .produtos {
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+    .produtosCard {
+      width: 30%;
+    }
+  }
+  
+  /* Telas grandes e desktops (a partir de 1201px) */
+  @media screen and (min-width: 1201px) {
+    .areaTotal {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .menu {
+      padding: 2rem;
+      justify-content: space-between;
+    }
+    .produtos {
+      gap: 2rem;
+      padding: 2rem;
+      justify-content: space-around;
+    }
+    .produtosCard {
+      width: 28%;
+      max-width: none;
+    }
+    .rodape {
+      padding: 2rem;
+      gap: 2rem;
+    }
+  }
+  
