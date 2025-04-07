@@ -34,10 +34,10 @@ if (isset($_POST['nome'], $_POST['cpf'], $_POST['email'], $_POST['password'])) {
             $mail->Host = "smtp.gmail.com";
             $mail->Port = 587;
 
-            $mail->Username = 'fritschetools@gmail.com';
-            $mail->Password = 'zrnflnldbjbwailv';
+            $mail->Username = 'kauancornelsen2@gmail.com';
+            $mail->Password = 'qkxyiucozppopmox';
 
-            $mail->setFrom('fritschetools@gmail.com', 'Suporte do Sistema');
+            $mail->setFrom('kauancornelsen2@gmail.com', 'Suporte do Sistema');
             $mail->addAddress($email, $nome);
 
             $mail->isHTML(true);
