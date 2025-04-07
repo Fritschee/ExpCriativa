@@ -36,3 +36,31 @@
     background-color: #ffc107;
     color: #000;
 }
+
+/*-------------------------------------------------------------
+   Media Queries para Diferentes Resoluções
+-------------------------------------------------------------*/
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    .alerta {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        bottom: 20px;
+    }
+    .alerta.mostrar {
+        bottom: 40px;
+    }
+}
+
+/* Tablets e telas pequenas (481px até 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .alerta {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+        bottom: 30px;
+    }
+    .alerta.mostrar {
+        bottom: 50px;
+    }
+}
