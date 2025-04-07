@@ -62,7 +62,6 @@ mysqli_close($con);
     <meta charset="UTF-8">
     <title>Confirmação de Cadastro</title>
     <link rel="stylesheet" href="../css/confirma-cadastro.css">
-    <script src="../js/confirma-cadastro.js" defer></script>
 </head>
 <body>
     <div class="mensagem <?php echo $tipo; ?>">
