@@ -30,13 +30,13 @@ function redefinirSenha() {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            alert("Senha alterada com sucesso.");
+            exibirAlerta("Senha alterada com sucesso.", "sucess");
             window.location.href = "login.html";
         } else {
             alert(data.message);
         }
     })
     .catch(err => {
-        alert("Erro ao redefinir senha: " + err);
+        exibirAlerta("Erro ao redefinir senha: ", "error");
     });
 }

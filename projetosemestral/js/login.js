@@ -22,9 +22,9 @@ function login() {
             sessionStorage.setItem("nome", dados.nome);
             window.location.href = "../index/index.html";
         } else {
-            alert("Erro ao fazer login: " + dados.message);
+            exibirAlerta("Erro ao fazer login: " + dados.message);
         }
     }).catch(error => {
-        alert("Erro ao processar o login: " + error);
+        exibirAlerta("Erro ao processar o login: " + error);
     });
 }

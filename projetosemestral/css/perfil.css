@@ -1,28 +1,128 @@
-.perfil-container {
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin-top: 50px;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(rgba(44, 44, 44, 0.9), rgba(44, 44, 44, 0.9)),
+                url('../assets/fundo.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
 }
+
+/* Área total */
+.areaTotal {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menu */
+.menu {
+    background-color: #858585;
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnLateral {
+    margin: 0.5rem;
+    flex: 1 1 150px;
+    text-align: center;
+}
+
+.logo {
+    max-height: 80px;
+    cursor: pointer;
+}
+
+/* Botões */
+.btn {
+    background-color: #858585;
+    border-radius: 12px;
+    transition: 0.4s;
+    padding: 10px;
+    width: 100%;
+    font-weight: bold;
+    font-size: 1rem;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+    color: #000;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #2c2c2c;
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+}
+
+/* Perfil */
+.perfil-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    background-color: #fff;
+    color: #000;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.clientesTitulo {
+    font-size: 2.2rem;
+    font-weight: bold;
+    margin: 0 auto 2rem;
+    padding: 1rem 2rem;
+    background-color: #2c2c2c;
+    color: #fff;
+    border-radius: 12px;
+    width: 100%;
+    text-align: center;
+    max-width: 500px;
+}
+
 
 .perfil-card {
-    background-color: #2c2c2c;
-    color: white;
-    padding: 20px;
-    border-radius: 12px;
-    width: 400px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: solid 1px #fff;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 2;
 }
 
-.perfil-card p {
-    font-size: 16px;
-    margin: 10px 0;
-}
-
+/* Botão de alterar senha */
 .perfil-botao {
-    margin-top: 20px;
-    width: 250px;
+    margin-top: 1rem;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.perfil-botao:hover {
+    background-color: #0056b3;
+}
+
+/* Responsivo */
+@media screen and (max-width: 768px) {
+    .perfil-container {
+        margin: 2rem 1rem;
+        padding: 1.5rem;
+    }
+
+    .btn {
+        font-size: 0.95rem;
+    }
+
+    .logo {
+        height: auto;
+        max-width: 100px;
+    }
 }

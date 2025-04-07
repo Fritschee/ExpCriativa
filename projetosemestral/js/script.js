@@ -24,7 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const email = sessionStorage.getItem("email");
 
     if (!nome || !email) {
-        alert("Sessão expirada. Faça login novamente.");
         window.location.href = "../pages/login.html";
         return;
     }

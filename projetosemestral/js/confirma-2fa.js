@@ -19,10 +19,10 @@ function confirmar2FA() {
           if (data.success) {
               window.location.href = "../index/index.html";
           } else {
-              alert("Código inválido. Tente novamente.");
+              exibirAlerta("Código inválido. Tente novamente.", success);
           }
       })
       .catch(err => {
-          alert("Erro: " + err);
+          exibirAlerta("Erro na inserção do código ", "error");
       });
 }

@@ -11,15 +11,13 @@ function gravar() {
         return regex.test(password);
     }
 
-    // Função para validar e-mail
     function isValidEmail(email) {
         var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     }
 
-    // Função para validar CPF
     function isValidCPF(cpf) {
-        if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false; // Verifica sequência repetida
+        if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
         
         var soma = 0, resto;
         for (var i = 1; i <= 9; i++) soma += parseInt(cpf[i - 1]) * (11 - i);
@@ -37,17 +35,17 @@ function gravar() {
     }
 
     if (!isValidEmail(email)) {
-        alert("E-mail inválido.");
+        exibirAlerta("E-mail inválido.", "error");
         return;
     }
 
     if (!isValidCPF(cpf)) {
-        alert("CPF inválido.");
+        exibirAlerta("CPF inválido.", "error");
         return;
     }
 
     if (!isStrongPassword(password)) {
-        alert("A senha deve ter no mínimo 12 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.");
+        exibirAlerta("A senha deve ter no mínimo 12 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais.", "warning");
         return;
     }
 
@@ -55,16 +53,15 @@ function gravar() {
     var hashedPasswordconfirm = CryptoJS.SHA256(passwordConfirm).toString();
 
     if (hashedPassword !== hashedPasswordconfirm) {
-        alert("As senhas não são iguais.");
+        exibirAlerta("As senhas não são iguais.", "error");
         return;
     }
 
     var dados = new FormData(form);
-    dados.set('cpf', cpf); // Envia o CPF sem pontos e traços
+    dados.set('cpf', cpf);
     dados.set('password', hashedPassword);
     dados.delete('passwordconfirm');
 
-    // Mostra uma mensagem ao usuário enquanto espera
     const botaoRegistrar = document.querySelector('.submit');
     botaoRegistrar.disabled = true;
     botaoRegistrar.textContent = 'Registrando, aguarde...';
@@ -77,10 +74,10 @@ function gravar() {
         if (data.success) {
             window.location.href = "../pages/configurar-2fa.html?email=" + encodeURIComponent(email);
         } else {
-            alert("Erro ao registrar: " + data.message);
+            exibirAlerta("Erro ao registrar: " + data.message, "error");
         }
     }).catch(error => {
-        alert("Erro ao processar o registro: " + error);
+        exibirAlerta("Erro ao processar o registro: " + error, "error");
     }).finally(() => {
         botaoRegistrar.disabled = false;
         botaoRegistrar.textContent = 'Registrar';

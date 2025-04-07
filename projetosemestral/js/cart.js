@@ -58,9 +58,11 @@ function gotoIndex() {
     window.location.href = "../index/index.html";
 }
 
-function gotoCart() {
-    window.location.href = "../pages/cart.html";
+function gotoProfile() {
+    window.location.href = "../pages/perfil.html";
 }
+
+
 
 // Carrega tudo ao iniciar
 document.addEventListener("DOMContentLoaded", () => {

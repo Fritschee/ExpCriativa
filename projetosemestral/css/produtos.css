@@ -1,177 +1,184 @@
-body{
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
     display: flex;
-    margin: 0px;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(rgba(44, 44, 44, 0.9), rgba(44, 44, 44, 0.9)),
+                url('../assets/fundo.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
 }
 
-.areaTotal{
-    background-color: #858585;
-    margin: 0px;
+/* Área principal */
+.areaTotal {
     width: 100%;
-    height: 1348px;
+    background-color: transparent;
 }
 
-.header{
+/* Header */
+.header {
     background-color: #2c2c2c;
     color: #fff;
     width: 100%;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    padding: 1rem;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
-.menu{
+/* Menu */
+.menu {
     background-color: #858585;
-    height: 150px;
-    position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
+    padding: 1rem;
 }
 
-.btn{
+.btnLateral, .btnProdutos {
+    margin: 0.5rem;
+    flex: 1 1 150px;
+    text-align: center;
+}
+
+.logo {
+    cursor: pointer;
+    max-width: 100px;
+}
+
+/* Botões */
+.btn, .produtosBtn {
     background-color: #858585;
     border-radius: 12px;
-    transition-duration: 0.4s;
+    transition: 0.4s;
     padding: 10px;
     width: 100%;
-    height: 60px;
     font-weight: bold;
-    font-size: large;
+    font-size: 1rem;
+    height: 50px;
+    cursor: pointer;
+    border: none;
 }
 
-.btn:hover{
+.btn:hover, .produtosBtn:hover {
     background-color: white;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+    color: #2c2c2c;
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
 }
 
-.btnProdutos{
-    margin: auto;
-    width: 600px;
-    position: relative;
-}
-
-.btnLateral{
-    width: 150px;
-    position: relative;
-    margin: 20px;
-}
-
-.logo{
-    cursor: pointer;
-}
-
-.produtos{
+/* Produtos */
+.produtos {
     width: 100%;
-    height: 360px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
 }
 
-.produtosCard{
-    width: 600px;
-    height: 300px;
-    background-color: #fff;
-    margin: auto;
-    float: left;
-    transition-duration: 0.4s;
-    border-style: solid;
-    border-color: #2c2c2c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.produtosImg{
-    width: 50%;
-    height: 100%;
-    margin: 0px;
-    float: left;
-}
-
-.produtosInfo{
-    width: 50%;
-    height: 100%;
-    margin: 0px;
-    float: left;
-}
-
-.produtosNome{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-.produtosDesc{
-    width: 100%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: x-large;
-}
-
-.produtosVal{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-.produtosBtn{
+.produtosCard {
     width: 90%;
-    height: 15%;
-    margin-left: 5%;
-    background-color: #858585;
+    max-width: 600px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #2c2c2c;
     border-radius: 12px;
-    transition-duration: 0.4s;
-    padding: 10px;
-    font-weight: bold;
-    font-size: large;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    transition: 0.4s ease;
 }
 
-.produtosBtn:hover{
-    background-color: white;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
+.produtosCard:hover {
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
 }
 
-.rodape{
-    background-color: #2c2c2c;
+.produtosImg {
+    flex: 1 1 50%;
+    max-height: 300px;
+    overflow: hidden;
+}
+
+.produtosImg img {
     width: 100%;
-    height: 100px;
+    height: auto;
+}
+
+.produtosInfo {
+    flex: 1 1 50%;
+    padding: 1rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
-.rodapeCard{
-    width: 200px;
-    height: 100px;
-    margin: auto;
-    border-radius: 12px;
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.rodapeImg{
-    margin: auto;
-}
-
-.rodapeTexto{
-    text-align: center;
-    font-size: large;
+.produtosNome {
+    font-size: 1.5rem;
     font-weight: bold;
+    text-align: center;
+}
+
+.produtosDesc {
+    font-size: 1.1rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.produtosVal {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Rodapé */
+.rodape {
+    background-color: #2c2c2c;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+}
+
+.rodapeCard {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rodapeImg {
+    width: 32px;
+    height: 32px;
+}
+
+.rodapeTexto {
     color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .produtosCard {
+        flex-direction: column;
+    }
+
+    .produtosImg, .produtosInfo {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .btn, .produtosBtn {
+        font-size: 0.95rem;
+    }
+
+    .produtosBtn {
+        margin-top: 1rem;
+    }
 }

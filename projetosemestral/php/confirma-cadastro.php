@@ -1,48 +1,73 @@
 <?php
-
 include "conexao.php";
 
+$mensagem = "";
+$tipo = ""; // success | error | info
+$redirecionamento = "register.html";
+
 if (!isset($_GET['token'])) {
-    echo "<h3>Token inválido ou não fornecido.</h3>";
-    header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
-    exit;
-}
-
-$token = mysqli_real_escape_string($con, $_GET['token']);
-
-$sql = "SELECT confirmado FROM usuario WHERE token = ?";
-$stmt = mysqli_prepare($con, $sql);
-mysqli_stmt_bind_param($stmt, 's', $token);
-mysqli_stmt_execute($stmt);
-mysqli_stmt_store_result($stmt);
-
-if (mysqli_stmt_num_rows($stmt) === 1) {
-    mysqli_stmt_bind_result($stmt, $confirmado);
-    mysqli_stmt_fetch($stmt);
-
-    if ($confirmado) {
-        echo "<h3>Seu cadastro já foi confirmado anteriormente!</h3>";
-        header("Refresh: 3; url=http://localhost/projetosemestral/pages/login.html");
-    } else {
-        $sqlUpdate = "UPDATE usuario SET confirmado = true, token = NULL WHERE token = ?";
-        $stmtUpdate = mysqli_prepare($con, $sqlUpdate);
-        mysqli_stmt_bind_param($stmtUpdate, 's', $token);
-        mysqli_stmt_execute($stmtUpdate);
-
-        if (mysqli_stmt_affected_rows($stmtUpdate) > 0) {
-            echo "<h3>Cadastro confirmado com sucesso!</h3>";
-            header("Refresh: 3; url=http://localhost/projetosemestral/pages/login.html");
-        } else {
-            echo "<h3>Erro ao confirmar cadastro. Tente novamente.</h3>";
-            header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
-        }
-
-        mysqli_stmt_close($stmtUpdate);
-    }
+    $mensagem = "Token inválido ou não fornecido.";
+    $tipo = "error";
 } else {
-    echo "<h3>Token inválido ou já utilizado.</h3>";
-    header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
+    $token = mysqli_real_escape_string($con, $_GET['token']);
+
+    $sql = "SELECT confirmado FROM usuario WHERE token = ?";
+    $stmt = mysqli_prepare($con, $sql);
+    mysqli_stmt_bind_param($stmt, 's', $token);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_store_result($stmt);
+
+    if (mysqli_stmt_num_rows($stmt) === 1) {
+        mysqli_stmt_bind_result($stmt, $confirmado);
+        mysqli_stmt_fetch($stmt);
+
+        if ($confirmado) {
+            $mensagem = "Seu cadastro já havia sido confirmado anteriormente!";
+            $tipo = "info";
+            $redirecionamento = "login.html";
+        } else {
+            $sqlUpdate = "UPDATE usuario SET confirmado = true, token = NULL WHERE token = ?";
+            $stmtUpdate = mysqli_prepare($con, $sqlUpdate);
+            mysqli_stmt_bind_param($stmtUpdate, 's', $token);
+            mysqli_stmt_execute($stmtUpdate);
+
+            if (mysqli_stmt_affected_rows($stmtUpdate) > 0) {
+                $mensagem = "Cadastro confirmado com sucesso!";
+                $tipo = "success";
+                $redirecionamento = "login.html";
+                header("Refresh: 3; url=http://localhost/projetosemestral/pages/login.html");
+            } else {
+                $mensagem = "Erro ao confirmar cadastro. Tente novamente.";
+                $tipo = "error";
+                header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
+            }
+
+            mysqli_stmt_close($stmtUpdate);
+        }
+    } else {
+        $mensagem = "Token inválido ou já utilizado.";
+        $tipo = "error";
+        header("Refresh: 3; url=http://localhost/projetosemestral/pages/register.html");
+    }
+
+    mysqli_stmt_close($stmt);
 }
 
-mysqli_stmt_close($stmt);
 mysqli_close($con);
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Confirmação de Cadastro</title>
+    <link rel="stylesheet" href="../css/confirma-cadastro.css">
+    <script src="../js/confirma-cadastro.js" defer></script>
+</head>
+<body>
+    <div class="mensagem <?php echo $tipo; ?>">
+        <strong><?php echo $mensagem; ?></strong>
+        <small>Você será redirecionado em 3 segundos...</small>
+    </div>
+</body>
+</html>

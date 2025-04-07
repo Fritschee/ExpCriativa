@@ -40,10 +40,10 @@ function validar2FA() {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            alert("2FA configurado com sucesso!");
+            exibirAlerta("2FA configurado com sucesso!", "success");
             window.location.href = "../pages/login.html";
         } else {
-            alert("Código inválido. Tente novamente.");
+            exibirAlerta("Código inválido. Tente novamente.", "error");
         }
     });
 }

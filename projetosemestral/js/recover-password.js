@@ -10,13 +10,13 @@ function enviarEmailRecuperacao() {
     .then(res => res.json())
     .then(data => {
         if (data.success) {
-            alert("E-mail enviado com instruções para redefinir sua senha.");
+            exibirAlerta("E-mail enviado com instruções para redefinir sua senha.","success");
             window.location.href = "login.html";
         } else {
             alert(data.message);
         }
     })
     .catch(err => {
-        alert("Erro ao enviar: " + err);
+        alert("Erro ao enviar: ","error");
     });
 }
