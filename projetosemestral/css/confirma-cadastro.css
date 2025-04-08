@@ -1,3 +1,11 @@
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
 body {
     background: linear-gradient(rgba(44, 44, 44, 0.9), rgba(44, 44, 44, 0.9)),
                 url('../assets/fundo.jpeg') no-repeat center center fixed;
@@ -10,6 +18,7 @@ body {
     height: 100vh;
 }
 
+/* Mensagem */
 .mensagem {
     background-color: #fff;
     color: #000;
@@ -17,10 +26,18 @@ body {
     border-radius: 12px;
     text-align: center;
     max-width: 500px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     font-size: 1.2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
+/* Efeito de hover: leve elevação e aumento da sombra */
+.mensagem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.35);
+}
+
+/* Variedades de mensagem */
 .mensagem.success {
     border-left: 10px solid #28a745;
 }
@@ -39,3 +56,33 @@ body {
     font-size: 0.9rem;
     color: #555;
 }
+
+/*-------------------------------------------------------------
+  Media Queries para Diferentes Resoluções
+-------------------------------------------------------------*/
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    .mensagem {
+         padding: 1.5rem 2rem;
+         max-width: 90%;
+         font-size: 1rem;
+    }
+    .mensagem small {
+         font-size: 0.8rem;
+    }
+}
+
+/* Tablets (de 481px até 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .mensagem {
+         padding: 1.75rem 2.5rem;
+         max-width: 90%;
+         font-size: 1.1rem;
+    }
+    .mensagem small {
+         font-size: 0.85rem;
+    }
+}
+
+/* Em telas maiores (acima de 768px) mantém-se o padrão original */
