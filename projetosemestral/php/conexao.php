@@ -1,5 +1,12 @@
 <?php
+include 'env.php';
 
-$con = mysqli_connect("localhost:3306", "applicationUser", "SenhaForte@123", "projetosemestral");
+$host = "localhost";
+$user = "root";
+$password = getenv("DB_PASSWORD");
+$dbname = "projetosemestral";
 
-?>
+$conn = new mysqli($host, $user, $password, $dbname);
+if ($conn->connect_error) {
+    die("Erro de conexão: " . $conn->connect_error);
+}
