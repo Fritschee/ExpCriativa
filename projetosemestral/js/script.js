@@ -31,3 +31,21 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("perfil-nome").textContent = nome;
     document.getElementById("perfil-email").textContent = email;
 });
+
+
+let idleTime = 0;
+
+function resetIdleTime() {
+    idleTime = 0;
+}
+document.onclick = resetIdleTime;
+document.onmousemove = resetIdleTime;
+document.onkeypress = resetIdleTime;
+document.onscroll = resetIdleTime;
+
+setInterval(() => {
+    idleTime++;
+    if (idleTime >= 1 * 60) {
+        window.location.href = '../php/logout.php';
+    }
+}, 1000);
