@@ -38,4 +38,6 @@ CREATE USER 'applicationUser'@'localhost' IDENTIFIED BY 'SenhaForte@123';
 
 GRANT SELECT, INSERT, UPDATE, DELETE ON projetosemestral.* TO 'applicationUser'@'localhost';
 
+-- SHOW GRANTS FOR 'applicationUser'@'localhost';
+
 FLUSH PRIVILEGES;
