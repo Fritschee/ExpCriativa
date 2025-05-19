@@ -1,0 +1,66 @@
+.alerta {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #2c2c2c;
+    color: #fff;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: all 0.5s ease;
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.alerta.mostrar {
+    opacity: 1;
+    bottom: 50px;
+}
+
+.alerta.success {
+    background-color: #28a745;
+}
+
+.alerta.error {
+    background-color: #dc3545;
+}
+
+.alerta.info {
+    background-color: #007bff;
+}
+
+.alerta.warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+/*-------------------------------------------------------------
+   Media Queries para Diferentes Resoluções
+-------------------------------------------------------------*/
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    .alerta {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+        bottom: 20px;
+    }
+    .alerta.mostrar {
+        bottom: 40px;
+    }
+}
+
+/* Tablets e telas pequenas (481px até 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .alerta {
+        padding: 0.9rem 1.8rem;
+        font-size: 1rem;
+        bottom: 30px;
+    }
+    .alerta.mostrar {
+        bottom: 50px;
+    }
+}

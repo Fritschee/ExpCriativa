@@ -27,3 +27,15 @@ values ('Bermuda Cyclone', 'BERMUDA AZUL PRA COMBINAR COM O KENNER', 379),
 ('Chinelo Kenner', 'DE KENNER', 150),
 ('Corrente de Ouro', 'CORRENTE DE OURO 24K 70CM', 2990),
 ('Óculos Juliet', 'UM ITEM DE CRIA QUE NÃO PODE FALTAR', 125);
+
+ALTER TABLE usuario
+ADD COLUMN token VARCHAR(64) NULL,
+ADD COLUMN confirmado BOOLEAN DEFAULT FALSE;
+
+ALTER TABLE usuario ADD secret_2fa VARCHAR(64) DEFAULT NULL;
+
+CREATE USER 'applicationUser'@'localhost' IDENTIFIED BY 'SenhaForte@123';
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON projetosemestral.* TO 'applicationUser'@'localhost';
+
+FLUSH PRIVILEGES;

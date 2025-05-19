@@ -1,27 +1,34 @@
 <html>
 
-    <head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/style-responsive.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script src="../js/login.js" defer></script>
+    <link rel="stylesheet" href="../css/alerta.css">
+    <script src="../js/alerta.js"></script>
 
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="../css/login.css">
-        <script src="../js/login.js" defer></script>
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <div class="form">
+    <div class="form">
 
-            <img src="../assets/logo.png" width="100%">
-            <h1 class="header">login</h1>
-            <form id="formLogin">
-                <input class="input" type="email" id="email" name="email" placeholder="Email" required>
-                <input class="input" type="password" id="password" name="password" placeholder="Senha" required>
-                <button onclick="login()" type="button" class="submit">Login</button>
-            </form>
-            <a href="../pages/register.html" class="link">Não possui uma conta? Clique aqui para se registrar.</a>
+        <img src="../assets/logo.png" width="100%">
+        <h1 class="header">Login</h1>
+        
+        <form id="formLogin">
+            <input class="input" type="email" id="email" name="email" placeholder="Email" required>
+            <input class="input" type="password" id="password" name="password" placeholder="Senha" required>
+            <button onclick="login()" type="button" class="submit">Login</button>
+        </form>
 
-        </div>
+        <a href="../pages/register.html" class="link">Não possui uma conta? Clique aqui para se registrar.</a>
+        <a href="../pages/forgot-password.html" class="link">Esqueci minha senha</a>
 
-    </body>
+    </div>
+
+</body>
 
 </html>

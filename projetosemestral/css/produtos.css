@@ -1,177 +1,247 @@
-body{
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
     display: flex;
-    margin: 0px;
-}
-
-.areaTotal{
-    background-color: #858585;
-    margin: 0px;
-    width: 100%;
-    height: 1348px;
-}
-
-.header{
-    background-color: #2c2c2c;
+    flex-direction: column;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(rgba(44, 44, 44, 0.9), rgba(44, 44, 44, 0.9)),
+                url('../assets/fundo.jpeg') no-repeat center center fixed;
+    background-size: cover;
     color: #fff;
+  }
+  
+  /* Área principal */
+  .areaTotal {
     width: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.menu{
+    background-color: transparent;
+  }
+  
+  /* Menu */
+  .menu {
     background-color: #858585;
-    height: 150px;
-    position: relative;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-}
-
-.btn{
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  .btnLateral, .btnProdutos {
+    margin: 0.5rem;
+    flex: 1 1 150px;
+    text-align: center;
+  }
+  
+  .logo {
+    cursor: pointer;
+    max-width: 100px;
+  }
+  
+  /* Botões */
+  .btn, .produtosBtn {
     background-color: #858585;
     border-radius: 12px;
-    transition-duration: 0.4s;
+    transition: 0.4s;
     padding: 10px;
     width: 100%;
-    height: 60px;
     font-weight: bold;
-    font-size: large;
-}
-
-.btn:hover{
+    font-size: 1rem;
+    height: 50px;
+    cursor: pointer;
+    border: none;
+  }
+  
+  .btn:hover, .produtosBtn:hover {
     background-color: white;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
-}
-
-.btnProdutos{
-    margin: auto;
-    width: 600px;
-    position: relative;
-}
-
-.btnLateral{
-    width: 150px;
-    position: relative;
-    margin: 20px;
-}
-
-.logo{
-    cursor: pointer;
-}
-
-.produtos{
+    color: #2c2c2c;
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+  }
+  
+  /* Produtos */
+  .produtos {
     width: 100%;
-    height: 360px;
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
-}
-
-.produtosCard{
-    width: 600px;
-    height: 300px;
-    background-color: #fff;
-    margin: auto;
-    float: left;
-    transition-duration: 0.4s;
-    border-style: solid;
-    border-color: #2c2c2c;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.produtosImg{
-    width: 50%;
-    height: 100%;
-    margin: 0px;
-    float: left;
-}
-
-.produtosInfo{
-    width: 50%;
-    height: 100%;
-    margin: 0px;
-    float: left;
-}
-
-.produtosNome{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-.produtosDesc{
-    width: 100%;
-    height: 40%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: x-large;
-}
-
-.produtosVal{
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: xx-large;
-    font-weight: bold;
-}
-
-.produtosBtn{
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .produtosCard {
     width: 90%;
-    height: 15%;
-    margin-left: 5%;
-    background-color: #858585;
+    max-width: 600px;
+    background-color: #fff;
+    color: #000;
+    border: 2px solid #2c2c2c;
     border-radius: 12px;
-    transition-duration: 0.4s;
-    padding: 10px;
-    font-weight: bold;
-    font-size: large;
-}
-
-.produtosBtn:hover{
-    background-color: white;
-    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-    cursor: pointer;
-}
-
-.rodape{
-    background-color: #2c2c2c;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: 0.4s ease;
+  }
+  
+  .produtosCard:hover {
+    box-shadow: 0 12px 16px rgba(0,0,0,0.2);
+  }
+  
+  .produtosImg {
+    flex: 1 1 50%;
+    max-height: 300px; /* ou o valor que preferir */
+    overflow: hidden;
+  }
+  
+  .produtosImg img {
     width: 100%;
-    height: 100px;
+    height: 100%;
+    object-fit: contain; /* A imagem será redimensionada para caber no container sem ser cortada */
+  }
+  
+  .produtosInfo {
+    flex: 1 1 50%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  /* Rodapé */
+  .rodape {
+    background-color: #2c2c2c;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .rodapeCard {
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.rodapeCard{
-    width: 200px;
-    height: 100px;
-    margin: auto;
-    border-radius: 12px;
-    float: left;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.rodapeImg{
-    margin: auto;
-}
-
-.rodapeTexto{
-    text-align: center;
-    font-size: large;
-    font-weight: bold;
+    gap: 0.5rem;
+  }
+  
+  .rodapeImg {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .rodapeTexto {
     color: #fff;
-}
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  /*-------------------------------------------------------------
+    Media Queries para Diferentes Resoluções
+  -------------------------------------------------------------*/
+  
+  /* Telas muito pequenas (até 480px) */
+  @media screen and (max-width: 480px) {
+    /* Menu em coluna e botões com largura total */
+    .menu {
+      flex-direction: column;
+      align-items: center;
+    }
+    .btnLateral, .btnProdutos {
+      flex: 1 1 100%;
+    }
+    
+    /* Ajuste de fontes para melhor legibilidade */
+    .btn, .produtosBtn {
+      font-size: 0.9rem;
+    }
+    
+    /* Rodapé em coluna */
+    .rodape {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+  
+  /* Tablets e telas pequenas (a partir de 481px até 768px) */
+  @media screen and (min-width: 481px) and (max-width: 768px) {
+    /* Layout de produtos: manter os cards em coluna */
+    .produtosCard {
+      flex-direction: column;
+    }
+    .produtosImg, .produtosInfo {
+      flex: 1 1 100%;
+      text-align: center;
+    }
+    
+    /* Ajustes nos botões */
+    .btn, .produtosBtn {
+      font-size: 0.95rem;
+    }
+    
+    .produtosBtn {
+      margin-top: 1rem;
+    }
+  }
+  
+  /* Telas de tablets a laptops (a partir de 769px até 992px) */
+  @media screen and (min-width: 769px) and (max-width: 992px) {
+    /* Exibir os cards de produtos em duas colunas */
+    .produtos {
+      justify-content: space-around;
+    }
+    .produtosCard {
+      flex-direction: row;
+      width: 45%;
+    }
+    /* No menu, forçando layout em linha */
+    .menu {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+  
+  /* Laptops e desktops médios (a partir de 993px até 1200px) */
+  @media screen and (min-width: 993px) and (max-width: 1200px) {
+    /* Centralizando a área total e aumentando o espaçamento */
+    .areaTotal {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .menu {
+      justify-content: space-between;
+    }
+    .produtos {
+      gap: 2rem;
+      padding: 1.5rem;
+    }
+    .produtosCard {
+      width: 30%;
+    }
+  }
+  
+  /* Telas grandes e desktops (a partir de 1201px) */
+  @media screen and (min-width: 1201px) {
+    .areaTotal {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .menu {
+      padding: 2rem;
+      justify-content: space-between;
+    }
+    .produtos {
+      gap: 2rem;
+      padding: 2rem;
+      justify-content: space-around;
+    }
+    .produtosCard {
+      width: 28%;
+      max-width: none;
+    }
+    .rodape {
+      padding: 2rem;
+      gap: 2rem;
+    }
+  }
+  

@@ -1,16 +1,25 @@
-body{
-    display: flex;
-    margin: 0px;
+/* Reset e base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.areaTotal{
+body {
+    display: flex;
+    margin: 0;
+}
+
+/* Área total */
+.areaTotal {
     background-color: #858585;
-    margin: 0px;
+    margin: 0;
     width: 100%;
     height: 1647px;
 }
 
-.header{
+/* Header */
+.header {
     background-color: #2c2c2c;
     color: #fff;
     width: 100%;
@@ -18,7 +27,8 @@ body{
     justify-content: center;
 }
 
-.menu{
+/* Menu */
+.menu {
     background-color: #858585;
     height: 150px;
     position: relative;
@@ -26,7 +36,8 @@ body{
     align-items: center;
 }
 
-.btn{
+/* Botões */
+.btn {
     background-color: #858585;
     border-radius: 12px;
     transition-duration: 0.4s;
@@ -37,29 +48,30 @@ body{
     font-size: large;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: white;
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
     cursor: pointer;
 }
 
-.btnProdutos{
+.btnProdutos {
     margin: auto;
     width: 600px;
     position: relative;
 }
 
-.btnLateral{
+.btnLateral {
     width: 150px;
     position: relative;
     margin: 20px;
 }
 
-.logo{
+.logo {
     cursor: pointer;
 }
 
-.clientesTitulo{
+/* Clientes Título */
+.clientesTitulo {
     height: 100px;
     border-style: solid hidden hidden hidden;
     font-weight: bold;
@@ -69,7 +81,8 @@ body{
     justify-content: center;
 }
 
-.clientes{
+/* Clientes */
+.clientes {
     height: 360px;
     width: 100%;
     display: flex;
@@ -78,7 +91,8 @@ body{
     border-style: hidden hidden solid hidden;
 }
 
-.card{
+/* Card */
+.card {
     width: 300px;
     height: 300px;
     background-color: #2c2c2c;
@@ -90,30 +104,30 @@ body{
     border-color: #fff;
 }
 
-.card:hover{
+.card:hover {
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-.cardImagem{
+.cardImagem {
     height: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.cardNome{
-    height:25%;
+.cardNome {
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     font-size: xx-large;
     font-weight: bold;
-    color: #fff
+    color: #fff;
 }
 
-.cardTexto{
-    height:25%;
+.cardTexto {
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,7 +135,8 @@ body{
     color: #fff;
 }
 
-.contato{
+/* Contato */
+.contato {
     height: 210px;
     width: 100%;
     display: flex;
@@ -129,7 +144,7 @@ body{
     justify-content: center;
 }
 
-.contatoCard{
+.contatoCard {
     width: 600px;
     height: 150px;
     background-color: #fff;
@@ -143,7 +158,7 @@ body{
     justify-content: center;
 }
 
-.contatoCardTexto{
+.contatoCardTexto {
     width: 400px;
     height: 100%;
     margin: auto;
@@ -155,11 +170,12 @@ body{
     font-weight: bold;
 }
 
-.contatoCardImg{
+.contatoCardImg {
     margin: auto;
 }
 
-.rodape{
+/* Rodapé */
+.rodape {
     background-color: #2c2c2c;
     width: 100%;
     height: 100px;
@@ -168,7 +184,7 @@ body{
     justify-content: center;
 }
 
-.rodapeCard{
+.rodapeCard {
     width: 200px;
     height: 100px;
     margin: auto;
@@ -179,13 +195,343 @@ body{
     justify-content: center;
 }
 
-.rodapeImg{
+.rodapeImg {
     margin: auto;
 }
 
-.rodapeTexto{
+.rodapeTexto {
     text-align: center;
     font-size: large;
     font-weight: bold;
     color: #fff;
+}
+
+/*-------------------------------------------------------------
+  Media Queries para Diferentes Resoluções
+-------------------------------------------------------------*/
+
+/* Telas muito pequenas (até 480px) */
+@media screen and (max-width: 480px) {
+    .areaTotal {
+        height: auto; /* Altura ajustada para conteúdo variável */
+    }
+    .menu {
+        height: 100px;
+        flex-direction: column;
+    }
+    .btn {
+        font-size: 0.9rem;
+        height: 50px;
+        padding: 8px;
+    }
+    .btnProdutos {
+        width: 90%;
+    }
+    .btnLateral {
+        width: 100px;
+        margin: 10px;
+    }
+    .clientesTitulo {
+        height: 70px;
+        font-size: large;
+    }
+    .clientes {
+        height: auto;
+        flex-direction: column;
+    }
+    .card {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+        float: none;
+    }
+    .cardNome {
+        font-size: medium;
+    }
+    .contato {
+        height: auto;
+        flex-direction: column;
+    }
+    .contatoCard {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+        float: none;
+    }
+    .contatoCardTexto {
+        width: 100%;
+        font-size: medium;
+    }
+    .rodape {
+        height: auto;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    .rodapeCard {
+        width: 90%;
+        height: auto;
+        float: none;
+    }
+    .rodapeTexto {
+        font-size: 0.9rem;
+    }
+}
+
+/* Tablets e telas pequenas (de 481px até 768px) */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .areaTotal {
+        height: auto;
+    }
+    .menu {
+        height: 120px;
+        flex-direction: row;
+        padding: 0.5rem;
+    }
+    .btn {
+        font-size: 0.95rem;
+        height: 55px;
+        padding: 9px;
+    }
+    .btnProdutos {
+        width: 90%;
+    }
+    .btnLateral {
+        width: 130px;
+        margin: 15px;
+    }
+    .clientesTitulo {
+        height: 80px;
+        font-size: x-large;
+    }
+    .clientes {
+        height: auto;
+        flex-direction: column;
+    }
+    .card {
+        width: 45%;
+        height: auto;
+        margin: 10px;
+        float: none;
+    }
+    .cardNome {
+        font-size: large;
+    }
+    .contato {
+        height: auto;
+        flex-direction: column;
+    }
+    .contatoCard {
+        width: 90%;
+        height: auto;
+        margin: 10px auto;
+        float: none;
+    }
+    .contatoCardTexto {
+        width: 100%;
+        font-size: large;
+    }
+    .rodape {
+        height: auto;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+    .rodapeCard {
+        width: 90%;
+        height: auto;
+        float: none;
+    }
+    .rodapeTexto {
+        font-size: 1rem;
+    }
+}
+
+/* Telas de tablets a laptops (de 769px até 992px) */
+@media screen and (min-width: 769px) and (max-width: 992px) {
+    .areaTotal {
+        height: auto;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+    .menu {
+        height: 130px;
+    }
+    .btn {
+        font-size: 1rem;
+        height: 55px;
+    }
+    .btnProdutos {
+        width: 80%;
+    }
+    .btnLateral {
+        width: 140px;
+        margin: 15px;
+    }
+    .clientesTitulo {
+        height: 90px;
+        font-size: xx-large;
+    }
+    .clientes {
+        height: auto;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+    .card {
+        width: 45%;
+        height: auto;
+        margin: 10px;
+        float: none;
+    }
+    .cardNome {
+        font-size: x-large;
+    }
+    .contato {
+        height: auto;
+        flex-direction: row;
+    }
+    .contatoCard {
+        width: 80%;
+        height: auto;
+        margin: 10px auto;
+        float: none;
+    }
+    .contatoCardTexto {
+        width: 100%;
+        font-size: x-large;
+    }
+    .rodape {
+        height: auto;
+        flex-direction: row;
+        padding: 1rem;
+    }
+    .rodapeCard {
+        width: 30%;
+        height: auto;
+        float: none;
+    }
+    .rodapeTexto {
+        font-size: 1rem;
+    }
+}
+
+/* Laptops e desktops médios (de 993px até 1200px) */
+@media screen and (min-width: 993px) and (max-width: 1200px) {
+    .areaTotal {
+        max-width: 1200px;
+        margin: 0 auto;
+        height: auto;
+    }
+    .menu {
+        height: 150px;
+    }
+    .btn {
+        font-size: 1rem;
+        height: 60px;
+    }
+    .btnProdutos {
+        width: 600px;
+    }
+    .btnLateral {
+        width: 150px;
+        margin: 20px;
+    }
+    .clientesTitulo {
+        height: 100px;
+        font-size: xxx-large;
+    }
+    .clientes {
+        height: 360px;
+    }
+    .card {
+        width: 300px;
+        height: 300px;
+        margin: auto;
+        float: none;
+    }
+    .cardNome {
+        font-size: xx-large;
+    }
+    .contato {
+        height: 210px;
+    }
+    .contatoCard {
+        width: 600px;
+        height: 150px;
+        margin: auto;
+        float: none;
+    }
+    .contatoCardTexto {
+        width: 400px;
+        font-size: xx-large;
+    }
+    .rodape {
+        height: 100px;
+    }
+    .rodapeCard {
+        width: 200px;
+        height: 100px;
+        margin: auto;
+        float: none;
+    }
+    .rodapeTexto {
+        font-size: large;
+    }
+}
+
+/* Telas grandes e desktops (a partir de 1201px) */
+@media screen and (min-width: 1201px) {
+    .areaTotal {
+        max-width: 1400px;
+        margin: 0 auto;
+        height: 1647px;
+    }
+    .menu {
+        height: 150px;
+    }
+    .btn {
+        font-size: large;
+        height: 60px;
+    }
+    .btnProdutos {
+        width: 600px;
+    }
+    .btnLateral {
+        width: 150px;
+        margin: 20px;
+    }
+    .clientesTitulo {
+        height: 100px;
+        font-size: xxx-large;
+    }
+    .clientes {
+        height: 360px;
+    }
+    .card {
+        width: 300px;
+        height: 300px;
+    }
+    .cardNome {
+        font-size: xx-large;
+    }
+    .contato {
+        height: 210px;
+    }
+    .contatoCard {
+        width: 600px;
+        height: 150px;
+    }
+    .contatoCardTexto {
+        width: 400px;
+        font-size: xx-large;
+    }
+    .rodape {
+        height: 100px;
+    }
+    .rodapeCard {
+        width: 200px;
+        height: 100px;
+    }
+    .rodapeTexto {
+        font-size: large;
+    }
 }
