@@ -1,16 +1,5 @@
 <?php
-session_start();
-$timeout = 300; // 5 minutos
-
-if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > $timeout)) {
-    session_unset();
-    session_destroy();
-    header("Location: ../pages/login.html");
-    exit();
-}
-$_SESSION['LAST_ACTIVITY'] = time();
-?>
-<?php
+require_once __DIR__ . '/session.php';
 require_once '../lib/GoogleAuthenticator/PHPGangsta/GoogleAuthenticator.php';
 include "conexao.php";
 
