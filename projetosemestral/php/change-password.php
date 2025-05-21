@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/session.php';
 include "conexao.php";
 
 if (isset($_POST['token']) && isset($_POST['novaSenha'])) {

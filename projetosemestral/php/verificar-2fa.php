@@ -1,5 +1,4 @@
 <?php
-require_once __DIR__ . '/session.php';
 require_once '../lib/GoogleAuthenticator/PHPGangsta/GoogleAuthenticator.php';
 include "conexao.php";
 
