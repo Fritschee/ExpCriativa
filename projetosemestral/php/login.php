@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/session.php';
+
 ob_clean();
 header('Content-Type: application/json');
 
