@@ -1,12 +1,15 @@
 <?php
-include 'env.php';
+// conexao.php
+$env = include __DIR__ . '/env.php';
 
-$host = "localhost";
-$user = "root";
-$password = getenv("DB_PASSWORD");
-$dbname = "projetosemestral";
+$host     = $env['DB_HOST'];
+$dbname   = $env['DB_NAME'];
+$user     = $env['DB_USER'];
+$password = $env['DB_PASSWORD'];
 
-$conn = new mysqli($host, $user, $password, $dbname);
-if ($conn->connect_error) {
-    die("Erro de conexão: " . $conn->connect_error);
+$con = new mysqli($host, $user, $password, $dbname);
+
+if ($con->connect_error) {
+    die("Erro de conexão ({$con->connect_errno}): " . $con->connect_error);
 }
+?>

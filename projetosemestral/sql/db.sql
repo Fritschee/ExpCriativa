@@ -34,8 +34,10 @@ ADD COLUMN confirmado BOOLEAN DEFAULT FALSE;
 
 ALTER TABLE usuario ADD secret_2fa VARCHAR(64) DEFAULT NULL;
 
-CREATE USER 'applicationUser'@'localhost' IDENTIFIED BY 'SenhaForte@123';
+CREATE USER IF NOT EXISTS 'applicationUser'@'localhost'
+  IDENTIFIED BY 'SenhaForte@123';
 
-GRANT SELECT, INSERT, UPDATE, DELETE ON projetosemestral.* TO 'applicationUser'@'localhost';
+GRANT SELECT, INSERT, UPDATE, DELETE
+  ON projetosemestral.* TO 'applicationUser'@'localhost';
 
 FLUSH PRIVILEGES;
