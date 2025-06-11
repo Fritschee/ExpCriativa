@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/session.php';
+
 header('Content-Type: application/json');
 include "conexao.php";
 
