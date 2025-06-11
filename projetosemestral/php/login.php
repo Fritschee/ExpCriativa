@@ -1,7 +1,5 @@
 <?php
 session_start();
-
-// Suppress errors and clean buffer to ensure a pure JSON response
 error_reporting(0);
 ob_clean();
 header('Content-Type: application/json');
