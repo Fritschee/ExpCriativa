@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5437028c3510df733fda2132dfcf70148c1455bd
 ob_clean();
 header('Content-Type: application/json');
 
