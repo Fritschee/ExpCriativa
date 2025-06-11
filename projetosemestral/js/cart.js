@@ -55,7 +55,7 @@ function gotoProducts() {
 }
 
 function gotoIndex() {
-    window.location.href = "../index/index.html";
+    window.location.href = "../index/index.php";
 }
 
 function gotoProfile() {
