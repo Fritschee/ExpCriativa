@@ -1,3 +1,8 @@
+<?php
+// This will check for a valid session and redirect to login if it's not found.
+require_once '../php/session.php';
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 

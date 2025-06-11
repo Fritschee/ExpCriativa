@@ -3,7 +3,8 @@ function gotoProducts(){
 }
 
 function gotoIndex(){
-    window.location.href = "../index/index.html"
+    // IMPORTANT: This must point to index.php if you want the page to be protected
+    window.location.href = "../index/index.php" 
 }
 
 function gotoCart(){
@@ -23,13 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const nome = sessionStorage.getItem("nome");
     const email = sessionStorage.getItem("email");
 
-    if (!nome || !email) {
-        window.location.href = "../pages/login.html";
-        return;
+    const perfilNomeEl = document.getElementById("perfil-nome");
+    if (perfilNomeEl) {
+        perfilNomeEl.textContent = nome;
     }
-
-    document.getElementById("perfil-nome").textContent = nome;
-    document.getElementById("perfil-email").textContent = email;
+    
+    const perfilEmailEl = document.getElementById("perfil-email");
+    if (perfilEmailEl) {
+        perfilEmailEl.textContent = email;
+    }
 });
 
 
@@ -43,9 +46,11 @@ document.onmousemove = resetIdleTime;
 document.onkeypress = resetIdleTime;
 document.onscroll = resetIdleTime;
 
+// This interval checks for user inactivity every second
 setInterval(() => {
     idleTime++;
-    if (idleTime >= 1 * 60) {
+    // If user is idle for 60 seconds (1 * 60), redirect to logout
+    if (idleTime >= 60) {
         window.location.href = '../php/logout.php';
     }
 }, 1000);

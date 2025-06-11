@@ -1,13 +1,15 @@
 <?php
-<<<<<<< HEAD
-=======
+// Start or resume a session
+session_start();
 
->>>>>>> 5437028c3510df733fda2132dfcf70148c1455bd
+// Suppress errors and clean buffer to ensure a pure JSON response
+error_reporting(0);
 ob_clean();
 header('Content-Type: application/json');
 
 include "conexao.php";
 
+// Check if required POST variables are set
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -20,11 +22,20 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     if ($usuario = mysqli_fetch_assoc($result)) {
         if (!$usuario['confirmado']) {
-            echo json_encode(['success' => false, 'message' => 'Conta não confirmada.']);
-        } elseif ($usuario['senha'] !== $password) {
+            echo json_encode(['success' => false, 'message' => 'Conta não confirmada. Verifique seu e-mail.']);
+            exit;
+        }
+
+        if ($usuario['senha'] !== $password) {
             echo json_encode(['success' => false, 'message' => 'Credenciais inválidas.']);
-        } elseif (!empty($usuario['secret_2fa'])) {
-            // Login com 2FA ativado
+            exit;
+        }
+
+        if (!empty($usuario['secret_2fa'])) {
+            // 2FA is enabled. Set a temporary session to indicate the first step is complete.
+            $_SESSION['2fa_in_progress'] = true;
+            $_SESSION['2fa_email'] = $usuario['email'];
+
             echo json_encode([
                 'success' => true,
                 'require_2fa' => true,
@@ -32,9 +43,18 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 'nome' => $usuario['nome']
             ]);
         } else {
-            // Login direto (sem 2FA)
+            // No 2FA. Login is successful. Establish the final session.
+            $_SESSION['loggedin'] = true;
+            $_SESSION['email'] = $usuario['email'];
+            $_SESSION['nome'] = $usuario['nome'];
+            $_SESSION['LAST_ACTIVITY'] = time();
+            $_SESSION['CREATED'] = time();
+
+            unset($_SESSION['2fa_in_progress'], $_SESSION['2fa_email']);
+
             echo json_encode([
                 'success' => true,
+                'require_2fa' => false,
                 'email' => $usuario['email'],
                 'nome' => $usuario['nome']
             ]);
@@ -46,5 +66,5 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     mysqli_stmt_close($stmt);
     mysqli_close($con);
 } else {
-    echo json_encode(['success' => false, 'message' => 'Dados incompletos.']);
+    echo json_encode(['success' => false, 'message' => 'Dados de login incompletos.']);
 }
