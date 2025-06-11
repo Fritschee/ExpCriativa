@@ -1,5 +1,4 @@
 <?php
-// Start or resume a session
 session_start();
 
 // Suppress errors and clean buffer to ensure a pure JSON response
@@ -9,7 +8,6 @@ header('Content-Type: application/json');
 
 include "conexao.php";
 
-// Check if required POST variables are set
 if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = mysqli_real_escape_string($con, $_POST['email']);
     $password = mysqli_real_escape_string($con, $_POST['password']);
@@ -22,42 +20,26 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     if ($usuario = mysqli_fetch_assoc($result)) {
         if (!$usuario['confirmado']) {
-            echo json_encode(['success' => false, 'message' => 'Conta não confirmada. Verifique seu e-mail.']);
+            echo json_encode(['success' => false, 'message' => 'Conta não confirmada.']);
             exit;
         }
-
         if ($usuario['senha'] !== $password) {
             echo json_encode(['success' => false, 'message' => 'Credenciais inválidas.']);
             exit;
         }
 
         if (!empty($usuario['secret_2fa'])) {
-            // 2FA is enabled. Set a temporary session to indicate the first step is complete.
             $_SESSION['2fa_in_progress'] = true;
             $_SESSION['2fa_email'] = $usuario['email'];
-
-            echo json_encode([
-                'success' => true,
-                'require_2fa' => true,
-                'email' => $usuario['email'],
-                'nome' => $usuario['nome']
-            ]);
+            echo json_encode(['success' => true, 'require_2fa' => true, 'email' => $usuario['email'], 'nome' => $usuario['nome']]);
         } else {
-            // No 2FA. Login is successful. Establish the final session.
             $_SESSION['loggedin'] = true;
             $_SESSION['email'] = $usuario['email'];
             $_SESSION['nome'] = $usuario['nome'];
             $_SESSION['LAST_ACTIVITY'] = time();
             $_SESSION['CREATED'] = time();
-
             unset($_SESSION['2fa_in_progress'], $_SESSION['2fa_email']);
-
-            echo json_encode([
-                'success' => true,
-                'require_2fa' => false,
-                'email' => $usuario['email'],
-                'nome' => $usuario['nome']
-            ]);
+            echo json_encode(['success' => true, 'require_2fa' => false, 'email' => $usuario['email'], 'nome' => $usuario['nome']]);
         }
     } else {
         echo json_encode(['success' => false, 'message' => 'Credenciais inválidas.']);
