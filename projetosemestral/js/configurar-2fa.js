@@ -41,7 +41,7 @@ function validar2FA() {
     .then(data => {
         if (data.success) {
             exibirAlerta("2FA configurado com sucesso!", "success");
-            window.location.href = "../pages/login.php";
+            window.location.href = "../pages/login.html";
         } else {
             exibirAlerta("Código inválido. Tente novamente.", "error");
         }
