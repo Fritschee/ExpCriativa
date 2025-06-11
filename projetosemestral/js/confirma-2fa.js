@@ -17,7 +17,7 @@ function confirmar2FA() {
     }).then(res => res.json())
       .then(data => {
           if (data.success) {
-              window.location.href = "../index/index.html";
+              window.location.href = "../index/index.php";
           } else {
               exibirAlerta("Código inválido. Tente novamente.", success);
           }

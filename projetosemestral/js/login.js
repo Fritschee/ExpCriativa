@@ -20,7 +20,7 @@ function login() {
         } else if (dados.success) {
             sessionStorage.setItem("email", dados.email);
             sessionStorage.setItem("nome", dados.nome);
-            window.location.href = "../index/index.html";
+            window.location.href = "../index/index.php";
         } else {
             exibirAlerta("Erro ao fazer login: " + dados.message);
         }
