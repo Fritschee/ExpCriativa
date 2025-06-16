@@ -1,7 +1,6 @@
 <?php
 // set OPENSSL_CONF=D:\xampp\apache\conf\openssl.cnf
 // D:\xampp\php\php.exe php/chaves.php
-// php projetosemestral/php/chaves.php
 
 
 // Configurações para a geração da chave RSA
@@ -25,7 +24,6 @@ openssl_pkey_export($recursoChave, $chavePrivada);
 $detalhesChave = openssl_pkey_get_details($recursoChave);
 $chavePublica = $detalhesChave["key"];
 
-// Define o diretório onde as chaves serão salvas
 $diretorioChaves = __DIR__ . '/../chaves/';
 if (!is_dir($diretorioChaves)) {
     // Cria o diretório caso não exista
