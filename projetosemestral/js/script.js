@@ -8,11 +8,11 @@ function gotoIndex(){
 }
 
 function gotoCart(){
-    window.location.href = "../pages/cart.html"
+    window.location.href = "../pages/cart.php"
 }
 
 function gotoProfile() {
-    window.location.href = "../pages/perfil.html";
+    window.location.href = "../pages/perfil.php";
 }
 
 function gotoAlterarSenha() {

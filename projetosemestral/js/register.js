@@ -1,4 +1,4 @@
-function gravar() {
+async function gravar() {
     var form = document.getElementById("formCadastro");
     var nome = document.getElementById("nome").value;
     var cpf = document.getElementById("cpf").value.replace(/[\.\-]/g, ""); // Remove pontos e traços automaticamente
@@ -57,29 +57,43 @@ function gravar() {
         return;
     }
 
-    var dados = new FormData(form);
-    dados.set('cpf', cpf);
-    dados.set('password', hashedPassword);
-    dados.delete('passwordconfirm');
-
+    const dadosOriginais = {
+        nome: nome,
+        cpf: cpf,
+        email: email,
+        password: hashedPasswordconfirm
+    };
+    
     const botaoRegistrar = document.querySelector('.submit');
-    botaoRegistrar.disabled = true;
-    botaoRegistrar.textContent = 'Registrando, aguarde...';
+    try {
+        // Desabilita o botão para evitar múltiplos envios
+        botaoRegistrar.disabled = true;
+        botaoRegistrar.textContent = 'Registrando, aguarde...';
+        
+        // 3. Criptografa o objeto de dados.
+        const dadosParaEnviar = await criptografarDados(dadosOriginais);
 
-    fetch("../php/insere-registro.php", {
-        method: "POST",
-        body: dados
-    }).then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            window.location.href = "../pages/configurar-2fa.html?email=" + encodeURIComponent(email);
+        // 4. Envia os dados criptografados para o backend.
+        const response = await fetch("../php/insere-registro.php", {
+            method: "POST",
+            body: dadosParaEnviar
+        });
+        const dadosResposta = await response.json();
+
+        // 5. Processa a resposta do servidor.
+        if (dadosResposta.success) {
+            // Redireciona para a configuração do 2FA, passando o email na URL
+            window.location.href = `../pages/configurar-2fa.html?email=${encodeURIComponent(email)}`;
         } else {
-            exibirAlerta("Erro ao registrar: " + data.message, "error");
+            exibirAlerta("Erro ao registrar: " + dadosResposta.message, "error");
         }
-    }).catch(error => {
-        exibirAlerta("Erro ao processar o registro: " + error, "error");
-    }).finally(() => {
+    } catch (error) {
+        // Captura erros da criptografia ou do fetch
+        console.error("Falha na operação de registro:", error);
+        exibirAlerta("Erro ao processar o registro: " + error.message, "error");
+    } finally {
+        // Reabilita o botão ao final do processo
         botaoRegistrar.disabled = false;
         botaoRegistrar.textContent = 'Registrar';
-    });
+    }
 }

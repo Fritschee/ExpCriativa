@@ -1,5 +1,7 @@
 <?php
 session_start();
+require_once __DIR__ . '/descriptografar.php';
+
 error_reporting(0);
 ob_clean();
 header('Content-Type: application/json');

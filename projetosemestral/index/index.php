@@ -1,10 +1,7 @@
 <?php
-<<<<<<< Updated upstream
 require_once '../php/session.php';
-=======
-// This will check for a valid session and redirect to login if it's not found.
->>>>>>> Stashed changes
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
