@@ -2,6 +2,7 @@
 // set OPENSSL_CONF=D:\xampp\apache\conf\openssl.cnf
 // D:\xampp\php\php.exe php/chaves.php
 
+// No caso do disco C: ->   C:\xampp\php\php.exe C:\xampp\htdocs\projetosemestral\php\chaves.php
 
 // Configurações para a geração da chave RSA
 $config = [

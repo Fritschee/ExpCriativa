@@ -1,9 +1,10 @@
 /**
- * Handles the user login process.
- * This function is now async to await the encryption process.
- * It captures user credentials, hashes the password, encrypts the payload,
- * and sends it to the server.
+ * Lida com o processo de login do usuário.
+ * Esta função agora é assíncrona para aguardar o processo de criptografia.
+ * Ela captura as credenciais do usuário, gera o hash da senha, criptografa o conteúdo
+ * e o envia para o servidor.
  */
+
 async function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
@@ -17,7 +18,7 @@ async function login() {
     try {
         const dadosParaEnviar = await criptografarDados(dadosOriginais);
 
-        // 4. Send the encrypted data to the login endpoint.
+        // 4. Enviar os dados criptografados para o endpoint de login.
         const response = await fetch("../php/login.php", {
             method: "POST",
             body: dadosParaEnviar
@@ -30,17 +31,17 @@ async function login() {
             sessionStorage.setItem("nome", dadosResposta.nome);
 
             if (dadosResposta.require_2fa) {
-                // Redirect to 2FA confirmation page if required
+                // Redireciona para a página de confirmação de 2FA, se necessário
                 window.location.href = `../pages/confirma-2fa.html?email=${encodeURIComponent(dadosResposta.email)}`;
             } else {
-                // Redirect to the main page upon successful login
+                // Redireciona para a página principal após login bem-sucedido
                 window.location.href = "../index/index.php";
             }
         } else {
             exibirAlerta("Erro ao fazer login: " + dadosResposta.message, "error");
         }
     } catch (error) {
-        // Catch and display any errors that occur during encryption or communication.
+        // Capturar e exibir os erros que ocorrem durante a criptografia ou comunicação.
         console.error("Falha na operação de login:", error);
         exibirAlerta("Falha de comunicação: " + error.message, "error");
     }

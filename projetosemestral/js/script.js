@@ -3,7 +3,7 @@ function gotoProducts(){
 }
 
 function gotoIndex(){
-    // IMPORTANT: This must point to index.php if you want the page to be protected
+    // IMPORTANTE: Isso deve apontar para index.php se você quiser que a página fique protegida
     window.location.href = "../index/index.php" 
 }
 
@@ -46,10 +46,10 @@ document.onmousemove = resetIdleTime;
 document.onkeypress = resetIdleTime;
 document.onscroll = resetIdleTime;
 
-// This interval checks for user inactivity every second
+// Este intervalo verifica a inatividade do usuário a cada segundo
 setInterval(() => {
     idleTime++;
-    // If user is idle for 60 seconds (1 * 60), redirect to logout
+    // Se o usuário estiver inativo por 60 segundos (1 * 60), redireciona para o logout
     if (idleTime >= 60) {
         window.location.href = '../php/logout.php';
     }

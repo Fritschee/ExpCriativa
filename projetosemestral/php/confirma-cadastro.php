@@ -2,7 +2,7 @@
 include "conexao.php";
 
 $mensagem = "";
-$tipo = ""; // success | error | info
+$tipo = ""; // sucesso | erro | informacao
 $redirecionamento = "register.html";
 
 if (!isset($_GET['token'])) {
